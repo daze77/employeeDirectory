@@ -6,10 +6,6 @@ import axios from 'axios'
 export default {
     getRandomPersons: function(){
         return axios.get("https://randomuser.me/api/?results=100")
-    },
-
-    getRandomDog: function(){
-        return axios.get("https://dog.ceo/api/breeds/image/random")
     }
 
 };
