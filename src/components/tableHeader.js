@@ -8,7 +8,7 @@ function TableHeaders(){
                 <th scope="col">#</th>
                 <th scope="col">Image</th>
                 <th scope="col">
-                    <button type="button" onClick={() => requestSort('firstname')}>
+                    <button type="button" >
                     First Name</button>
                     </th>
                 <th scope="col">Last Name</th>
