@@ -9,8 +9,6 @@ class CompleteTable extends Component {
     // state
     state = {
       peopleList: [],
-      firstname: []
-
   }
 
   // lifecycles
@@ -21,56 +19,33 @@ class CompleteTable extends Component {
 
   // function
 
-
   loadRandomPersons = () => {
       API.getRandomPersons().then(response => {
           console.log(response.data.results)
-          const test = response.data.results
-          test.forEach(element => console.log(element.name.first))
-   
-
-          test.map(object => {
-              return{
-                  b: object.name.first
-              } 
-          })
-          console.log(test.b)
-        
-
-
-
-          // // response.data.results.forEach(element => this.setState({b: element.name.first}))
-          // this.setState({peopleList: response.data.results.name.first})
-          // console.log(`array of names`, this.state.bnames)
-
-
          this.setState({peopleList: response.data.results})
-
-
-
-
-
-
-
-
-
-         
-          this.setState({names: response.data.results.forEach(element => console.log(element.name.first))})
-          this.state.peopleList.forEach(element => this.setState({names: element.name.first}))
-
       }).catch(err => console.log(err));
   };
   
   render(){
     return(
    
-        <table className="table">
-            {JSON.stringify(this.state.names)}
+        <table class="table table-hover">
             <TableHeaders/>
-            {this.state.peopleList.map(peopleaname => (
+            {this.state.peopleList.map(people => (
 
             <TableData
-                firstname={peopleaname.name.first}
+                keys={people.login.uuid}
+                firstname={people.name.first}
+                lastname={people.name.last}
+                gender={people.gender}
+                nationality={people.nat}
+                phone={people.phone}
+                dob={people.dob.date}
+                image={people.picture.thumbnail}
+                email={people.email}
+                country={people.location.country}
+                username={people.login.username}
+                mobile={people.cell}
             />
 
             ))}

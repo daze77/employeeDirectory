@@ -5,7 +5,7 @@ import CompleteTable from '../components/CompleteTable'
 
 function Employees(){
     return(
-        <div>Test
+        <div class="container">
             <CompleteTable/>
         </div>
     )
