@@ -2,7 +2,7 @@ import React from 'react'
 
 function TableData(){
     return(
-        <div>
+        
             <tbody>
                 <tr>
                     <th scope="row">1</th>
@@ -18,7 +18,7 @@ function TableData(){
                 </tr>
                 <tr>
                     <th scope="row">3</th>
-                    <td colspan="2">Larry the Bird</td>
+                    <td colSpan="2">Larry the Bird</td>
                     <td>@twitter</td>
                 </tr>
             </tbody>
@@ -28,7 +28,7 @@ function TableData(){
 
 
 
-        </div>
+        
     )
 }
 

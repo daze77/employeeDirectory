@@ -4,15 +4,12 @@ import TableHeaders from './tableHeader'
 
 function CompleteTable(){
     return(
-        <div>
-            <table class="table">
+   
+            <table className="table">
                 <TableHeaders/>
                 <TableData/>
             </table>
-
-
-
-        </div>
+       
     )
 
 

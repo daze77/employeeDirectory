@@ -2,7 +2,7 @@ import React from "react";
 
 function TableHeaders(){
 return (
-    <div>
+    
         
         <thead>
             <tr>
@@ -12,7 +12,7 @@ return (
                 <th scope="col">Handle</th>
             </tr>
         </thead>
-    </div>
+   
 )
 
 }
