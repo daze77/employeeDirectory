@@ -9,6 +9,10 @@ class CompleteTable extends Component {
     // state
     state = {
       peopleList: [],
+      firstName: [],
+      lastName: [],
+      firstName1: [],
+      b: []
   }
 
   // lifecycles
@@ -21,11 +25,42 @@ class CompleteTable extends Component {
 
   loadRandomPersons = () => {
       API.getRandomPersons().then(response => {
-          console.log(response.data.results)
-         this.setState({peopleList: response.data.results})
+        console.log(response.data.results)
+        this.setState({peopleList: response.data.results})
+         
+        this.state.peopleList.map(people => (
+            this.setState({firstName: people.name.first})
+         ))   
+        console.log(this.state.firstName)
+
+        // for (const b of this.state.peopleList){
+        //     console.log(b.name.first)
+        //     this.setState({firstName1: b.name.first})
+        //     console.log(this.state.firstName1)
+        // }
+      
+        this.state.peopleList.forEach(peoples => (
+            
+            // console.log(peoples.name.first)
+            this.setState({b: peoples.name.first})
+        ))
+        console.log(this.state.b)
+        
+        // .forEach(peoples =>(
+        //     console.log(peoples.name.first)
+        
+        // ))
+        // console.log(this.state.firstName1)
+
+
       }).catch(err => console.log(err));
+
+      
   };
-  
+
+        
+
+
   render(){
     return(
    

@@ -7,10 +7,9 @@ function TableHeaders(){
             <tr>
                 <th scope="col">#</th>
                 <th scope="col">Image</th>
-                <th scope="col">
-                    <button type="button" >
-                    First Name</button>
-                    </th>
+                <th scope="col" >
+                    First Name
+                </th>
                 <th scope="col">Last Name</th>
                 <th scope="col">Email</th>
                 <th scope="col">Gender</th>

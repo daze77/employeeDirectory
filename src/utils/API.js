@@ -5,7 +5,7 @@ import axios from 'axios'
 // eslint-disable-next-line
 export default {
     getRandomPersons: function(){
-        return axios.get("https://randomuser.me/api/?results=100")
+        return axios.get("https://randomuser.me/api/?results=50")
     }
 
 };
