@@ -48,7 +48,6 @@ class CompleteTable extends Component {
         } else {
             this.setState({currentSort: 'desc'})
         }
-        
         this.setState({peopleList: newState});
 
     };
@@ -81,10 +80,11 @@ class CompleteTable extends Component {
       
         <>
         <h1>Employee List</h1>
-        <button onClick={this.sortEmployees} > Push Here </button>
         <button onClick={this.filterPeople} > Push Here </button>
         <table class="table table-hover">
-            <TableHeaders/>
+            <TableHeaders
+                sort={this.sortEmployees} 
+            />
             {this.state.peopleList.map(people => (
             <TableData
                 keys={people.login.uuid}

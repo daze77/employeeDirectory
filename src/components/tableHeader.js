@@ -1,16 +1,16 @@
 import React from "react";
 
-function TableHeaders(){
+function TableHeaders(props){
+    console.log(props)
     return (
         
         <thead>
             <tr>
-                <th scope="col">#</th>
                 <th scope="col">Image</th>
                 <th scope="col" >
-                    First Name
+                    First Name <i class="fas fa-sort" onClick={props.sort} ></i>
                 </th>
-                <th scope="col">Last Name</th>
+                <th scope="col">Last Name </th>
                 <th scope="col">Email</th>
                 <th scope="col">Nationality</th>
                 <th scope="col">Country</th>
