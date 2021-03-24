@@ -10,7 +10,8 @@ class CompleteTable extends Component {
     state = {
     peopleList: [],
     currentSort: 'desc',
-      
+    myInput: "",
+    resultsList: []  
   }
 
   // lifecycles
@@ -24,11 +25,12 @@ class CompleteTable extends Component {
   loadRandomPersons = () => {
       API.getRandomPersons().then(response => {
         this.setState({peopleList: response.data.results})
-        console.log(`the people list`, this.state.peopleList)
+        this.setState({resultsList: [...this.state.peopleList]})
+        console.log(`the people list`, this.state.resultsList)
       }).catch(err => console.log(err));
   };
     sortEmployees = () => {
-        let newState = [...this.state.peopleList]
+        let newState = [...this.state.resultsList]
         console.log(`this is newstate`, newState)
 
         newState.sort((a, b) => {
@@ -48,22 +50,30 @@ class CompleteTable extends Component {
         } else {
             this.setState({currentSort: 'desc'})
         }
-        this.setState({peopleList: newState});
+        this.setState({resultsList: newState});
 
     };
 
 
+    handleInputChange = ( event ) => {
+        // save the input line changes
+        this.setState({myInput: event.target.value})
+        console.log(`this is what I entered`, this.state.myInput)
+       
+    }
 
             
-    // filterPeople = (country) => {
-    //     console.log(`the people`, this.state.peopleList)
-    //     // debugger
-    //     // const myInput = inputRef.current.value
-    //     const newState = this.state.peopleList.filter( employee => employee.country.indexOf( "Canada" )> -1 )
-    //     // let newList = employees.filter( employee=>employee.country === "Norway" )
-    //     console.log(`this is the part that broke it all `, this.state.newState)
-    //     this.setState({peopleList: newState});
-    // }
+    filterPeople = () => {
+        let countryList = [this.state.peopleList]
+        console.log(`the country`, countryList)
+        console.log(`the value of myInput`, this.state.myInput)
+        // debugger
+        // const myInput = inputRef.current.value
+        countryList = this.state.peopleList.filter( country => country.location.country.indexOf(this.state.myInput )> -1 )
+        // let newList = employees.filter( employee=>employee.country === "Norway" )
+        
+        this.setState({resultsList: countryList});
+    }
 
 
 //     let newList = employees.filter( employee=>employee.country = inputCountry )
@@ -80,12 +90,16 @@ class CompleteTable extends Component {
       
         <>
         <h1>Employee List</h1>
-        <button onClick={this.filterPeople} > Push Here </button>
+       
+        <div class="input-group mb-3">
+        <input value={this.state.myInput} onChange={this.handleInputChange}  type="text" class="form-control" placeholder="Recipient's First Name" aria-label="Recipient's username" aria-describedby="button-addon2"/>
+        <button class="btn btn-outline-secondary" type="button" id="button-addon2" onClick={this.filterPeople} >Search</button>
+        </div>
         <table class="table table-hover">
             <TableHeaders
                 sort={this.sortEmployees} 
             />
-            {this.state.peopleList.map(people => (
+            {this.state.resultsList.map(people => (
             <TableData
                 keys={people.login.uuid}
                 firstname={people.name.first}

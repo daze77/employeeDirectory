@@ -1,7 +1,7 @@
 import React from "react";
 
 function TableHeaders(props){
-    console.log(props)
+
     return (
         
         <thead>
