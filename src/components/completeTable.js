@@ -8,11 +8,9 @@ import API from '../utils/API'
 class CompleteTable extends Component {
     // state
     state = {
-      peopleList: [],
-      firstName: [],
-      lastName: [],
-      firstName1: [],
-      b: []
+    peopleList: [],
+    currentSort: 'default',
+      
   }
 
   // lifecycles
@@ -25,49 +23,58 @@ class CompleteTable extends Component {
 
   loadRandomPersons = () => {
       API.getRandomPersons().then(response => {
-        console.log(response.data.results)
         this.setState({peopleList: response.data.results})
-         
-        this.state.peopleList.map(people => (
-            this.setState({firstName: people.name.first})
-         ))   
-        console.log(this.state.firstName)
-
-        // for (const b of this.state.peopleList){
-        //     console.log(b.name.first)
-        //     this.setState({firstName1: b.name.first})
-        //     console.log(this.state.firstName1)
-        // }
-      
-        this.state.peopleList.forEach(peoples => (
-            
-            // console.log(peoples.name.first)
-            this.setState({b: peoples.name.first})
-        ))
-        console.log(this.state.b)
-        
-        // .forEach(peoples =>(
-        //     console.log(peoples.name.first)
-        
-        // ))
-        // console.log(this.state.firstName1)
-
-
+        console.log(`the people list`, this.state.peopleList)
       }).catch(err => console.log(err));
-
-      
   };
+    sortEmployees = () => {
+        let newState = [...this.state.peopleList]
+        console.log(`this is newstate`, newState)
 
-        
+        newState.sort((a, b) => {
+            let fa = a.name.first.toLowerCase(),
+                fb = b.name.first.toLowerCase();
+            if (fa < fb) {
+                return -1;
+            }
+            if (fa > fb) {
+                return 1;
+            }
+            return 0;
+        })
+        this.setState({peopleList: newState});
+
+    };
+
+
+
+            
+    // function filterEmployees(country){
+    //     console.log(`the employees`, employees)
+    //     // debugger
+    //     const myInput = inputRef.current.value
+    //     const newList = employees.filter( employee => employee.country.indexOf( myInput )> -1 )
+    //         let newList = employees.filter( employee=>employee.country === "Norway" )
+    //     console.log(`this is the part that broke it all `, newList)
+    //     setEmployees(newList);
+    // }
+
+
+
+
+
+
 
 
   render(){
     return(
-   
+      
+        <>
+        <h1>Employee List</h1>
+        <button onClick={this.sortEmployees} > Push Here </button>
         <table class="table table-hover">
             <TableHeaders/>
             {this.state.peopleList.map(people => (
-
             <TableData
                 keys={people.login.uuid}
                 firstname={people.name.first}
@@ -82,16 +89,11 @@ class CompleteTable extends Component {
                 username={people.login.username}
                 mobile={people.cell}
             />
-
             ))}
-        
         </table>
-   
+        </>
     )
-
   }
-  
-  
 }
 
 
