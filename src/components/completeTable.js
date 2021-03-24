@@ -9,7 +9,7 @@ class CompleteTable extends Component {
     // state
     state = {
     peopleList: [],
-    currentSort: 'default',
+    currentSort: 'desc',
       
   }
 
@@ -42,6 +42,13 @@ class CompleteTable extends Component {
             }
             return 0;
         })
+        if( this.state.currentSort === 'desc' ) {
+            this.setState({currentSort: 'asc'})
+        newState.reverse()
+        } else {
+            this.setState({currentSort: 'desc'})
+        }
+        
         this.setState({peopleList: newState});
 
     };
@@ -49,17 +56,20 @@ class CompleteTable extends Component {
 
 
             
-    // function filterEmployees(country){
-    //     console.log(`the employees`, employees)
+    // filterPeople = (country) => {
+    //     console.log(`the people`, this.state.peopleList)
     //     // debugger
-    //     const myInput = inputRef.current.value
-    //     const newList = employees.filter( employee => employee.country.indexOf( myInput )> -1 )
-    //         let newList = employees.filter( employee=>employee.country === "Norway" )
-    //     console.log(`this is the part that broke it all `, newList)
-    //     setEmployees(newList);
+    //     // const myInput = inputRef.current.value
+    //     const newState = this.state.peopleList.filter( employee => employee.country.indexOf( "Canada" )> -1 )
+    //     // let newList = employees.filter( employee=>employee.country === "Norway" )
+    //     console.log(`this is the part that broke it all `, this.state.newState)
+    //     this.setState({peopleList: newState});
     // }
 
 
+//     let newList = employees.filter( employee=>employee.country = inputCountry )
+//     const myInput = inputRef.current.value
+// const newList = employees.filter( employee => employee.country.indexOf( myInput )>-1 )
 
 
 
@@ -72,6 +82,7 @@ class CompleteTable extends Component {
         <>
         <h1>Employee List</h1>
         <button onClick={this.sortEmployees} > Push Here </button>
+        <button onClick={this.filterPeople} > Push Here </button>
         <table class="table table-hover">
             <TableHeaders/>
             {this.state.peopleList.map(people => (
