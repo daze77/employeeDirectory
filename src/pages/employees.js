@@ -1,6 +1,6 @@
 import React from 'react'
 import CompleteTable from '../components/completeTable'
-import './EmployeesStyle.css'
+import './employeesStyle.css'
 
 
 
