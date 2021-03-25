@@ -1,6 +1,10 @@
 {
   "name": "employeedirectory",
+  "discription": "a really cool app",
   "version": "0.1.0",
+  "engines":{
+    "node": "v14.15.4"
+  },
   "private": true,
   "homepage": "https://daze77.github.io",
   "dependencies": {
