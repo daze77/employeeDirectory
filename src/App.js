@@ -1,5 +1,5 @@
 import React from 'react'
-// import Employees from './pages/employees'
+import Employees from './pages/employees'
 import './App.css';
 
 function App() {
@@ -7,7 +7,7 @@ function App() {
     <div>
 
       
-      {/* <Employees/> */}
+      <Employees/>
 
     </div>
   );
