@@ -8,6 +8,7 @@ function Employees(){
     return(
         <div class="container">
             <CompleteTable/>
+            This is a test
         </div>
     )
 }
