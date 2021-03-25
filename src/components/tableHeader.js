@@ -17,7 +17,7 @@ function TableHeaders(props){
                 <th scope="col">Phone</th>
                 <th scope="col">Mobile</th>
                 <th scope="col">User Name</th>
-                
+
             </tr>
         </thead>
     

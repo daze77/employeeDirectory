@@ -8,7 +8,7 @@ function TableData(props){
                 <td><img alt={props.image} src={props.image}/> </td>
                 <td>{props.firstname}</td>
                 <td>{props.lastname}</td>
-                <td>{props.email}</td>
+                <td><a href={props.emailLink}>{props.email}</a></td>
                 <td>{props.nationality}</td>
                 <td>{props.country}</td>
                 <td>{props.phone}</td>

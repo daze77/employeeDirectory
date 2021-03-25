@@ -63,37 +63,29 @@ class CompleteTable extends Component {
     }
 
             
-    filterPeople = () => {
+    filter = () => {
         let countryList = [this.state.peopleList]
+        
         console.log(`the country`, countryList)
         console.log(`the value of myInput`, this.state.myInput)
         // debugger
         // const myInput = inputRef.current.value
-        countryList = this.state.peopleList.filter( country => country.location.country.indexOf(this.state.myInput )> -1 )
+        countryList = this.state.peopleList.filter( country => country.location.country.indexOf(this.state.myInput)> -1 )
         // let newList = employees.filter( employee=>employee.country === "Norway" )
         
         this.setState({resultsList: countryList});
     }
 
 
-//     let newList = employees.filter( employee=>employee.country = inputCountry )
-//     const myInput = inputRef.current.value
-// const newList = employees.filter( employee => employee.country.indexOf( myInput )>-1 )
-
-
-
-
-
-
   render(){
     return(
       
         <>
-        <h1>Employee List</h1>
+        <h1 class="p-5 text-center bg-secondary text-white">Employee Directory</h1>
        
         <div class="input-group mb-3">
-        <input value={this.state.myInput} onChange={this.handleInputChange}  type="text" class="form-control" placeholder="Recipient's First Name" aria-label="Recipient's username" aria-describedby="button-addon2"/>
-        <button class="btn btn-outline-secondary" type="button" id="button-addon2" onClick={this.filterPeople} >Search</button>
+        <input onKeyPress={this.filter} value={this.state.myInput} onChange={this.handleInputChange}  type="text" class="form-control" placeholder="Enter Country Name" aria-label="Country Search" aria-describedby="button-addon2"/>
+        <button class="btn btn-outline-secondary" type="button" id="button-addon2" onClick={this.filter} >Search</button>
         </div>
         <table class="table table-hover">
             <TableHeaders
@@ -109,7 +101,8 @@ class CompleteTable extends Component {
                 phone={people.phone}
                 dob={people.dob.date}
                 image={people.picture.thumbnail}
-                email={people.email}
+                emailLink= {"mailto:" + people.email}
+                email= {people.email}
                 country={people.location.country}
                 username={people.login.username}
                 mobile={people.cell}
